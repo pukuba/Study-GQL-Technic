@@ -1,9 +1,10 @@
 import { commentsLoader } from "lib/dataloader"
 
 import * as Query from './Query'
-import { Post } from './Type'
+import { Post, Comment } from './Type'
 
 module.exports = {
     Query,
-    Post
+    Post,
+    Comment
 }

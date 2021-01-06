@@ -7,12 +7,12 @@ type Post{
     title: String!
     content: String!
     comments: [Comment!]!
-    postId: String!
+    id: String!
 }
 
 type Comment{
     postId: String!
     author: String!
     content: String!
-    commentId: String!
+    id: String!
 }

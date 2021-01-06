@@ -1,5 +1,5 @@
 import env from './env'
-import { MongoClient } from 'mongodb'
+import { MongoClient, Logger } from 'mongodb'
 
 let db: any = null
 let instance: number = 0
@@ -8,6 +8,7 @@ const connectDB = () => {
 
 
     const connect = async () => {
+        Logger.setLevel("debug");
         try {
             const client = await MongoClient.connect(
                 process.env.DB_HOST
