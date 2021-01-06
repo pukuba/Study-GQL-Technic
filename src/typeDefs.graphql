@@ -1,0 +1,17 @@
+type Query{
+    Posts: [Post!]!
+}
+
+type Post{
+    author: String!
+    title: String!
+    content: String!
+    comments: [Comment!]!
+    PostId: String!
+}
+
+type Comment{
+    postId: String!
+    author: String!
+    content: String!
+}
