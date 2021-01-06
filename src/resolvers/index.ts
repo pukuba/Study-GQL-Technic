@@ -1,5 +1,9 @@
-import * as Query from './Query'
+import { commentsLoader } from "lib/dataloader"
 
-export {
-    Query
+import * as Query from './Query'
+import { Post } from './Type'
+
+module.exports = {
+    Query,
+    Post
 }
