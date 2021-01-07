@@ -1,19 +1,12 @@
 import env from './env'
-import { MongoClient, Logger } from 'mongodb'
+import { MongoClient, Db } from 'mongodb'
 
-let db: any = null
+let db: Db | null = null
 let instance: number = 0
-let logCount = 0;
 const connectDB = () => {
-
 
     const connect = async () => {
 
-        Logger.setCurrentLogger((msg, state) => {
-            console.log(`MONGO DB REQUEST ${++logCount}: ${msg}`);
-        });
-        Logger.setLevel('debug');
-        Logger.filter('class', ['Cursor']);
         try {
             const client = await MongoClient.connect(
                 process.env.DB_HOST

@@ -7,6 +7,7 @@ import { createServer } from 'http'
 import dotenv from 'dotenv'
 import path from 'path'
 dotenv.config()
+import { commentsLoader } from './lib/dataloader'
 import depthLimit from 'graphql-depth-limit'
 const resolvers = require('./resolvers')
 const typeDefs = readFileSync(path.join(__dirname, 'typeDefs.graphql'), 'utf-8')
@@ -24,7 +25,10 @@ const start = async () => {
 
         context: () => {
             return {
-                db
+                db,
+                loaders: {
+                    commentsLoader: commentsLoader(),
+                }
             }
         },
         validationRules: [
