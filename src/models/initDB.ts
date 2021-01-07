@@ -8,7 +8,7 @@ const initDB = async () => {
         await db.collection(ls[idx].name).drop()
     }
     const posts = []
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 300; i++) {
         const author = faker.name.firstName()
         const title = faker.name.title()
         const content = faker.lorem.text()
@@ -23,7 +23,7 @@ const initDB = async () => {
     for (const id in insertedIds) {
         const e = faker.random.number({
             'min': 30,
-            'max': 100
+            'max': 150
         })
         for (let i = 0; i < e; i++) {
             const author = faker.name.firstName()

@@ -5,7 +5,6 @@ import DB from './config/connectDB'
 import { readFileSync } from 'fs'
 import { createServer } from 'http'
 import dotenv from 'dotenv'
-import { commentsLoader } from './lib/dataloader'
 import path from 'path'
 dotenv.config()
 import depthLimit from 'graphql-depth-limit'
@@ -25,10 +24,7 @@ const start = async () => {
 
         context: () => {
             return {
-                db,
-                loaders: {
-                    commentsLoader: commentsLoader(),
-                }
+                db
             }
         },
         validationRules: [
