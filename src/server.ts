@@ -9,9 +9,8 @@ import path from 'path'
 dotenv.config()
 import { commentsLoader } from './lib/dataloader'
 import depthLimit from 'graphql-depth-limit'
-const resolvers = require('./resolvers')
+import resolvers from './resolvers'
 const typeDefs = readFileSync(path.join(__dirname, 'typeDefs.graphql'), 'utf-8')
-
 import cors from 'cors'
 const app = express()
 
