@@ -1,5 +1,5 @@
 type Query{
-    Posts: [Post!]!
+    Posts: [Post!]! 
 }
 
 type Post{
