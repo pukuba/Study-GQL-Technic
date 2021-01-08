@@ -2,7 +2,7 @@
   "name": "study-gql-technic",
   "version": "1.0.0",
   "description": "study Dataloader & persistgraphql",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "start": "nodemon --exec ts-node src/server.ts",
     "set": "ts-node src/models/initDB.ts",
