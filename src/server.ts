@@ -35,6 +35,10 @@ const start = async () => {
         ]
     })
 
+    app.use('/api', (req, res, next) => {
+        next()
+    })
+
     server.applyMiddleware({
         app,
         path: "/api"
