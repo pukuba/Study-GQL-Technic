@@ -44,7 +44,7 @@ const start = async () => {
 
     const httpServer = createServer(app)
     httpServer.timeout = 5000
-    httpServer.listen({ port: process.env.PORT }, () => {
+    httpServer.listen({ port: process.env.PORT || 3333 }, () => {
         console.log(`GraphQL Server Running at http://localhost:${process.env.PORT}${server.graphqlPath}`)
     })
 }
