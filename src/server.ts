@@ -10,7 +10,7 @@ import { commentsLoader } from 'lib/dataloader'
 import DB from 'config/connectDB'
 import redis from 'config/connectRedis'
 import depthLimit from 'graphql-depth-limit'
-
+import { createComplexityLimitRule } from "graphql-validation-complexity"
 import resolvers from 'resolvers'
 const typeDefs = readFileSync('src/typeDefs.graphql', 'utf-8')
 const pubsub = new PubSub()
@@ -33,6 +33,9 @@ const start = async () => {
         // plugins: [responseCachePlugin()],
         validationRules: [
             depthLimit(7),
+            createComplexityLimitRule(1000, {
+                onCost: (cost: Number) => console.log(`Query Cost : ${cost}`)
+            })
         ]
     })
 
