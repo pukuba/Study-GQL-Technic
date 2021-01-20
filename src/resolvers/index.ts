@@ -1,7 +1,7 @@
-import * as Mutation from './Mutation'
-import * as Subscription from './Subscription'
-import * as Query from './Query'
-import { Post, Comment } from './Type'
+import * as Mutation from 'resolvers/Mutation'
+import * as Subscription from 'resolvers/Subscription'
+import * as Query from 'resolvers/Query'
+import { Post, Comment } from 'resolvers/Type'
 
 export default {
     Query,

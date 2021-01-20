@@ -1,6 +1,6 @@
 import DataLoader from 'dataloader'
-import DB from '../config/connectDB'
-import { Comment } from '../models/types'
+import DB from 'config/connectDB'
+import { Comment } from 'models/types'
 const batchLoadFn = async (postIds: readonly String[]) => {
     const db = await DB.get()
     const comments = await db.collection('comment').find({ postId: { $in: postIds } }).toArray()

@@ -1,5 +1,5 @@
 import { Db } from 'mongodb'
-import { Post, Comment, Loaders } from '../models/types'
+import { Post, Comment, Loaders } from 'models/types'
 
 const Post = {
     id: (parent: Post) => parent._id,

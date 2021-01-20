@@ -1,4 +1,4 @@
-import DB from '../config/connectDB'
+import DB from 'config/connectDB'
 import faker from 'faker'
 
 const initDB = async () => {

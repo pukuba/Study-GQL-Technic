@@ -2,8 +2,8 @@ import express from 'express'
 import expressPlayground from 'graphql-playground-middleware-express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import { invert } from 'lodash';
-import queryMap from '../queries/queryMap'
+import { invert } from 'lodash'
+import queryMap from 'queries/queryMap'
 const invertedMap = invert(queryMap)
 const app = express()
 app.use(cors())
