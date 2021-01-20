@@ -1,5 +1,6 @@
 type Query{
     Posts: [Post!]! 
+    recentChat: [Chat!]!
 }
 
 type Post{
@@ -15,4 +16,17 @@ type Comment{
     author: String!
     content: String!
     id: String!
+}
+
+type Chat{
+    author: String!
+    content: String!
+}
+
+type Mutation{
+    chat(author: String!,content: String): Chat
+}
+
+type Subscription{
+    newChat: Chat!
 }
