@@ -18,6 +18,7 @@ const chat = (parent: void, { author, content }: { author: String, content: Stri
             }
         }
     })
+    redis.expire('chat', 120)
     return newChat
 }
 
