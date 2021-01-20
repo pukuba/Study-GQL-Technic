@@ -1,5 +1,23 @@
 import DB from 'config/connectDB'
 import faker from 'faker'
+import { loopPost, loopComment } from 'lib/lib'
+import { ObjectID } from 'mongodb'
+
+const createPost = () => {
+    return {
+        author: faker.name.firstName(),
+        title: faker.name.title(),
+        content: faker.lorem.text()
+    }
+}
+
+const createComment = (postId: ObjectID) => {
+    return {
+        postId,
+        author: faker.name.firstName(),
+        content: faker.lorem.text()
+    }
+}
 
 const initDB = async () => {
     const db = await DB.get()
@@ -7,33 +25,15 @@ const initDB = async () => {
     for (const idx in ls) {
         await db.collection(ls[idx].name).drop()
     }
-    const posts = []
-    for (let i = 0; i < 500; i++) {
-        const author = faker.name.firstName()
-        const title = faker.name.title()
-        const content = faker.lorem.text()
-        posts.push({
-            author,
-            title,
-            content
-        })
-    }
+    const posts = loopPost(300, createPost, [])
     const { insertedIds } = await db.collection('post').insertMany(posts)
     const comments = []
     for (const id in insertedIds) {
-        const e = faker.random.number({
+        const cnt = faker.random.number({
             'min': 1,
             'max': 5
         })
-        for (let i = 0; i < e; i++) {
-            const author = faker.name.firstName()
-            const content = faker.lorem.text()
-            comments.push({
-                postId: insertedIds[id],
-                author,
-                content
-            })
-        }
+        comments.push(...loopComment(cnt, insertedIds[id], createComment, []))
     }
     await db.collection('comment').insertMany(comments)
     process.exit(0)

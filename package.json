@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
-    "set": "ts-node src/models/initDB.ts",
+    "set": "ts-node  -r tsconfig-paths/register src/models/initDB.ts",
     "test": "ts-mocha -p ./tsconfig.json src/TEST/*.test.ts",
     "build": "tsc -p .",
     "on": "pm2 start dist/"
