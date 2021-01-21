@@ -4,11 +4,11 @@
   "description": "study Dataloader & persistgraphql",
   "main": "src/server.ts",
   "scripts": {
-    "start": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
-    "set": "ts-node  -r tsconfig-paths/register src/models/initDB.ts",
-    "test": "ts-mocha -p ./tsconfig.json -r tsconfig-paths/register src/TEST/*.test.ts --exit",
+    "start": "NODE_PATH=src/ nodemon --exec ts-node src/server.ts",
+    "set": "NODE_PATH=src/ ts-node src/models/initDB.ts",
+    "test": "NODE_PATH=src/ ts-mocha -p ./tsconfig.json src/TEST/*.test.ts --exit",
     "build": "tsc -p .",
-    "on": "pm2 start dist/"
+    "on": "NODE_PATH=dist/ node dist/server.js"
   },
   "repository": {
     "type": "git",
