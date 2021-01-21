@@ -14,5 +14,5 @@ declare module "graphql-validation-complexity" {
     export function createComplexityLimitRule(
         maxCost: number,
         options?: ComplexityLimitRuleOptions,
-    ): (ctx: ValidationContext) => any
+    ): (ctx: ValidationContext) => void
 }
