@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
     "set": "ts-node  -r tsconfig-paths/register src/models/initDB.ts",
-    "test": "ts-mocha -p ./tsconfig.json src/TEST/*.test.ts",
+    "test": "ts-mocha -p ./tsconfig.json -r tsconfig-paths/register src/TEST/*.test.ts --exit",
     "build": "tsc -p .",
     "on": "pm2 start dist/"
   },
@@ -43,6 +43,7 @@
     "nodemon": "^2.0.6",
     "persistgraphql": "^0.3.11",
     "redis": "^3.0.2",
+    "supertest": "^6.1.1",
     "ts-mocha": "^8.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
@@ -52,6 +53,7 @@
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/lodash": "^4.14.167",
     "@types/mongodb": "^3.6.3",
-    "@types/redis": "^2.8.28"
+    "@types/redis": "^2.8.28",
+    "@types/supertest": "^2.0.10"
   }
 }
