@@ -1,4 +1,5 @@
 type Query{
+    test: String!
     Posts: [Post!]! 
     recentChat: [Chat!]!
 }

@@ -2,8 +2,8 @@ import { ApolloServer, PubSub } from 'apollo-server-express'
 import { readFileSync } from 'fs'
 import { createServer } from 'http'
 import dotenv from 'dotenv'
-import app from "app"
 dotenv.config()
+import app from "app"
 
 // import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import { commentsLoader } from 'lib/dataloader'
@@ -30,7 +30,9 @@ const start = async () => {
                 redis
             }
         },
-        // plugins: [responseCachePlugin()],
+        formatResponse: (res: any) => {
+            return res
+        },
         validationRules: [
             depthLimit(7),
             createComplexityLimitRule(1000, {
@@ -43,7 +45,6 @@ const start = async () => {
         app,
         path: "/api"
     })
-
     const httpServer = createServer(app)
     server.installSubscriptionHandlers(httpServer)
     httpServer.timeout = 5000
